@@ -1,0 +1,1 @@
+<td><button name="btn_appeal" type="submit" value="<?php echo $id ?>" class="btn btn-primary">Appeal</button></td>
