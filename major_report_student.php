@@ -3,6 +3,7 @@
 require 'app/controller/init.php';
 protect_page_profile_admin();
 require 'app/controller/administrator/login-credential.php';
+require 'app/view/handler/gateway/_offense_minor.php';
 require 'app/view/administrator/overall-header.php';
 ?>
 <!-- === Insert Administrator Content === -->
@@ -32,25 +33,22 @@ require 'app/view/administrator/overall-header.php';
       </div><!-- /. box -->
     </div><!-- /.col -->
     <?php  
-      if (isset($_GET['r'])) {
+      if (isset($_POST['student_id'])) {
         global $conn;
-        $id = base64_decode($_GET['r']);
+        $id = $_POST['student_id'];
 
-        $select = "SELECT id_picture, last_name, first_name, middle_name From students where id = $id";
+        $select = "SELECT last_name, first_name, middle_name From students where id = $id";
         $query = $conn->query($select);
         while ($row = $query->fetch_object()) {
-          $id_picture = $row->id_picture;
           $last_name = $row->last_name;
           $first_name = $row->first_name;
           $middle_name = $row->middle_name;
         }
-      }
     ?>
     <div class="col-md-9">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <img src="<?php echo $id_picture; ?>" width="90" height="90">
-          <h3 class="box-title" style="margin-left: 2%;"><?php echo $last_name . ", " . $first_name . " " . $middle_name; ?></h3>
+          <h3 class="box-title"><?php echo $last_name . ", " . $first_name . " " . $middle_name; ?></h3>
           <div class="box-tools pull-right">
           </div><!-- /.box-tools -->
         </div><!-- /.box-header -->
@@ -75,6 +73,9 @@ require 'app/view/administrator/overall-header.php';
         </div>
       </div><!-- /. box -->
     </div><!-- /.col -->
+    <?php  
+      }
+    ?>
   </div><!-- /.row -->
 </section><!-- /.content -->
 <!-- === [= NOTHING FOLLOWS =] === -->

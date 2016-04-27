@@ -9,7 +9,6 @@ if ($result == null) {
   $offense = "Third Offense";
   $sql_offense = "third_offense";
 }
-
 if (isset($_GET['r'])) {
   $decode = base64_decode($_GET['r']);
 
@@ -17,7 +16,7 @@ if (isset($_GET['r'])) {
 ?>
 <div class="alert alert-danger">
   <i class="icon fa fa-warning"></i>
-  Please do not leave <strong><u>Date of Incident</u></strong> and <strong><u>Narrative Report</u></strong> and <strong><u>Status</u></strong> field blank.
+  Please do not leave <strong><u>Date of Incident</u></strong> and <strong><u>Narrative Report</u></strong> field blank.
 </div>
 <?php
   } elseif ($decode == 'incomplete_date_incident') {
@@ -32,13 +31,6 @@ if (isset($_GET['r'])) {
 <div class="alert alert-danger">
   <i class="icon fa fa-warning"></i>
   Please do not leave the <strong><u>Narrative Report</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == 'incomplete_status') {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave the <strong><u>Status</u></strong> field blank.
 </div>
 <?php
   }

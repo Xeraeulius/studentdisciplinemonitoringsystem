@@ -33,13 +33,11 @@ require 'app/view/administrator/overall-header.php';
       </div><!-- /. box -->
     </div><!-- /.col -->
     <?php  
-      if (isset($_GET['r'])) {
-        $id = base64_decode($_GET['r']);
+      if (isset($_POST['offense_id'])) {
+        $id = $_POST['offense_id'];
 
         $count = getting_offense_count($id);
-        if ($count == "-") {
-          case_report_minor($id);
-        } elseif ($count == "First Offense") {
+        if ($count == "First Offense") {
           first_offense_minor($id);
         } elseif ($count == "Second Offense") {
           second_offense_minor($id);

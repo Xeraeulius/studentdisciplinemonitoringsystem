@@ -138,9 +138,9 @@
                 ?>
               </a>
               <ul class="treeview-menu">
-                <li><a href="../apcviolation/details.php?r=<?php echo base64_encode(notification_today($student_id)); ?>"><i class="fa fa-circle-o text-yellow"></i> Pending</a></li>
-                <li><a href="../apcviolation/dresscode_violation.php?r=<?php echo base64_encode(notification_today($student_id)); ?>"><i class="fa fa-circle-o text-red"></i> Infringement</a></li>
-                <li><a href="../apcviolation/excused.php?r=<?php echo base64_encode(notification_today($student_id)); ?>"><i class="fa fa-circle-o text-green"></i> Excused</a></li>
+                <li><a href="details.php?r=<?php echo base64_encode(notification_today($student_id)); ?>"><i class="fa fa-circle-o text-yellow"></i> Pending</a></li>
+                <li><a href="dresscode_violation.php?r=<?php echo base64_encode(notification_today($student_id)); ?>"><i class="fa fa-circle-o text-red"></i> Infringement</a></li>
+                <li><a href="excused.php?r=<?php echo base64_encode(notification_today($student_id)); ?>"><i class="fa fa-circle-o text-green"></i> Excused</a></li>
               </ul>
               <!-- End of Dresscode Violation List -->
 

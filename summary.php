@@ -13,9 +13,9 @@ student_notification($admin_id);
     Violation Report
     <small>Summary: <?php echo school_term() . " Term"; ?></small>
   </h1>
-  <ol class="breadcrumb">
-    <li><a href="admin.php"><i class="fa fa-home"></i>Home</a></li>
-  </ol> 
+	<ol class="breadcrumb">
+		<li><a href="admin.php"><i class="fa fa-home"></i>Home</a></li>
+	</ol>	
 </section>
 
 <section class="content">
@@ -24,7 +24,10 @@ student_notification($admin_id);
       <div class="box box-solid">
         <div class="box-body no-padding">
           <ul class="nav nav-pills nav-stacked">
-            <li><a href="summary_dress_code.php"><i class="fa fa-users"></i> Summary of Student Offenses</a></li>
+            <li class="active"><a href="#"><i class="glyphicon glyphicon-th-list"></i> Minor Offense</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-alert"></i> Major Offense</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Summary of Student Offenses</a></li>
+            <li><a href="inbox.php?inbox_details"><i class="fa fa-inbox"></i> Archive</a></li>
           </ul>
         </div><!-- /.box-body -->
       </div><!-- /. box -->
@@ -47,7 +50,7 @@ student_notification($admin_id);
                 <th>Sent Date</th>
               </tr>
               <tbody>
-                <?php // notification_of_student(); ?>
+                <?php notification_of_student(); ?>
               </tbody>
             </table><!-- /.table -->
           </div><!-- /.mail-box-messages -->

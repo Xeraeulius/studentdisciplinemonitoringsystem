@@ -87,7 +87,7 @@
                 <ul class="treeview-menu">
                   <li>
                     <a href="report_details.php"><i class="fa fa-circle-o text-yellow"></i> Pending</a>
-                    <a href="summary_dresscode_violation.php"><i class="fa fa-circle-o text-red"></i> Infringement</a>
+                    <a href="infringement.php"><i class="fa fa-circle-o text-red"></i> Infringement</a>
                   </li>
                 </ul>
               </li>
@@ -108,14 +108,8 @@
               </li>
               <!-- NOTHING FOLLOWS -->
               
-<!--                 <li>
-                  <a href="summary.php">
-                    <i class="fa fa-book"></i> <span>Summary</span>
-                  </a>
-                </li> -->
-
                 <li>
-                  <a href="summary_dress_code.php">
+                  <a href="summary.php">
                     <i class="fa fa-book"></i> <span>Summary</span>
                   </a>
                 </li>

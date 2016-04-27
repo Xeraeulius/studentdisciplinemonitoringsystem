@@ -123,7 +123,7 @@
                 <ul class="treeview-menu">
                   <li>
                     <a href="report_details.php"><i class="fa fa-circle-o text-yellow"></i> Pending</a>
-                    <a href="summary_dresscode_violation.php"><i class="fa fa-circle-o text-red"></i> Infringement</a>
+                    <a href="infringement.php"><i class="fa fa-circle-o text-red"></i> Infringement</a>
                   </li>
                 </ul>
               </li>

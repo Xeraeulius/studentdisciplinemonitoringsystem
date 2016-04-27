@@ -56,19 +56,10 @@ revert_page_protection_admin();
           <?php
               } else {
                 // Success Login -> Result: Working
-                $level_access = level_access($username);
-
-                if ($level_access == 10) {
-                  $logged_in = session_admin_login($username);
-                  $_SESSION['admin_id'] = $logged_in;
-                  header('Location: ../admin.php');
-                  exit();
-                } elseif ($level_access == 20) {
-                  $logged_in = session_root_login($username);
-                  $_SESSION['root_id'] = $logged_in;
-                  header('Location: ../root.php');
-                  exit();
-                }
+                $logged_in = session_admin_login($username);
+                $_SESSION['admin_id'] = $logged_in;
+                header('Location: ../admin.php');
+                exit();
               }
             }
           ?>

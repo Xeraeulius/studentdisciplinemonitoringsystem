@@ -45,24 +45,4 @@
 			exit();
 		}
 	}
-
-	##################################### 
-	#	   		ROOT FUNCTION 	     	#
-	#####################################
-
-	function revert_page_protection_root() {
-		if (initialize_token_root()) {
-			session_unset();
-			session_destroy();
-			header('Location: root.php');
-			exit();
-		}
-	}
-
-	function protect_page_profile_root() {
-		if (!initialize_token_root()) {
-			header('Location: admin/index.php');
-			exit();
-		}
-	}
 ?>

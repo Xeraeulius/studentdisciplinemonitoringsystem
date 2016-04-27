@@ -17,36 +17,9 @@ require 'app/view/administrator/select2-message.php';
 </section>
 
 <section class="content">
-
-<?php
-// require 'app/view/handler/gateway/_minor.php';
-if (isset($_GET['r'])) {
-  $decode = base64_decode($_GET['r']);
-  if ($decode == "missing_fields") {
+<?php  
+require 'app/view/handler/gateway/_minor.php';
 ?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave <strong><u>Name of Student</u></strong> and <strong><u>Reference Number</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == "missing_name") {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave <strong><u>Name of Student</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == "missing_minor_sanctions") {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave <strong><u>Reference Number</u></strong> field blank.
-</div>
-<?php
-  }
-}
-?>
-
   <div class="row">
     <div class="col-md-3">
       <a href="minor_offense_list.php" class="btn btn-primary btn-block margin-bottom">Back</a>

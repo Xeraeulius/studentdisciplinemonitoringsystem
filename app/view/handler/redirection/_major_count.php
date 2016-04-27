@@ -1,9 +1,9 @@
 <?php  
-if ($result == null || $result == '-') {
+if ($result == null) {
   $offense = "First Offense";
   $sql_offense = "first_offense";
 } elseif ($result == "First Offense") {
-  $offense = "Second Offense ";
+  $offense = "Second Offense";
   $sql_offense = "second_offense";
 } elseif ($result == "Second Offense") {
   $offense = "Third Offense";
@@ -17,7 +17,7 @@ if (isset($_GET['r'])) {
 ?>
 <div class="alert alert-danger">
   <i class="icon fa fa-warning"></i>
-   Please do not leave <strong><u>Date of Incident</u></strong> and <strong><u>Narrative Report</u></strong> and <strong><u>Status</u></strong> field blank.
+  Please do not leave <strong><u>Date of Incident</u></strong> and <strong><u>Narrative Report</u></strong> field blank.
 </div>
 <?php
   } elseif ($decode == 'incomplete_date_incident') {
@@ -32,13 +32,6 @@ if (isset($_GET['r'])) {
 <div class="alert alert-danger">
   <i class="icon fa fa-warning"></i>
   Please do not leave the <strong><u>Narrative Report</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == 'incomplete_status') {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave the <strong><u>Status</u></strong> field blank.
 </div>
 <?php
   }

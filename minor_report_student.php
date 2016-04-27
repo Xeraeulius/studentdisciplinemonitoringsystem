@@ -33,29 +33,27 @@ require 'app/view/administrator/overall-header.php';
       </div><!-- /. box -->
     </div><!-- /.col -->
     <?php  
-      if (isset($_GET['r'])) {
+      if (isset($_POST['student_id'])) {
         global $conn;
-        $id = base64_decode($_GET['r']);
+        $id = $_POST['student_id'];
 
-        $select = "SELECT id_picture, last_name, first_name, middle_name From students where id = $id";
+        $select = "SELECT last_name, first_name, middle_name From students where id = $id";
         $query = $conn->query($select);
         while ($row = $query->fetch_object()) {
-          $id_picture = $row->id_picture;
           $last_name = $row->last_name;
           $first_name = $row->first_name;
           $middle_name = $row->middle_name;
         }
-      }
     ?>
     <div class="col-md-9">
       <div class="box box-primary">
         <div class="box-header with-border">
-          <img src="<?php echo $id_picture; ?>" width="90" height="90">
-          <h3 class="box-title" style="margin-left: 2%;"><?php echo $last_name . ", " . $first_name . " " . $middle_name; ?></h3>
+          <h3 class="box-title"><?php echo $last_name . ", " . $first_name . " " . $middle_name; ?></h3>
           <div class="box-tools pull-right">
           </div><!-- /.box-tools -->
         </div><!-- /.box-header -->
         <div class="box-body no-padding">
+        <form action="student_minor_report.php" method="POST">
           <div class="table-responsive mailbox-messages">
             <table class="table table-hover table-striped">
               <tr>
@@ -69,11 +67,15 @@ require 'app/view/administrator/overall-header.php';
               </tbody>
             </table><!-- /.table -->
           </div><!-- /.mail-box-messages -->
+        </form>
         </div><!-- /.box-body -->
         <div class="box-footer no-padding">
         </div>
       </div><!-- /. box -->
     </div><!-- /.col -->
+    <?php  
+      }
+    ?>
   </div><!-- /.row -->
 </section><!-- /.content -->
 <!-- === [= NOTHING FOLLOWS =] === -->

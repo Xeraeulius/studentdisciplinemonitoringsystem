@@ -3,35 +3,8 @@
 require 'app/controller/init.php';
 protect_page_profile_admin();
 require 'app/controller/administrator/login-credential.php';
-
-// require 'app/view/handler/redirection/_minor_report.php';
-if (isset($_POST['minor_submit'])) {
-  if (empty($_POST['student_name']) && empty($_POST['sanctions_minor'])) {
-    header('Location: minor_offense_report.php?r=' . base64_encode('missing_fields'));
-  } elseif (empty($_POST['student_name'])) {
-    header('Location: minor_offense_report.php?r=' . base64_encode('missing_name'));
-  } elseif (empty($_POST['sanctions_minor'])) {
-    header('Location: minor_offense_report.php?r=' . base64_encode('missing_minor_sanctions'));
-  } else {
-    $_SESSION['student_name'] = $_POST['student_name'];
-    $_SESSION['sanctions_minor'] = $_POST['sanctions_minor'];
-
-    $student_id = $_SESSION['student_name'];
-    $sanctions_id = $_SESSION['sanctions_minor'];
-  }
-}
-
-// require 'app/view/handler/gateway/_minor_session.php';
-if (isset($_SESSION['student_name'])) {
-  $student_id = $_SESSION['student_name'];
-  $sanctions_id = $_SESSION['sanctions_minor'];
-  $result = minor_offense_exists($student_id, $sanctions_id);
-}
-
-if ($result == "Third Offense") {
-  header('Location: minor_offense_list.php?m=' . base64_encode('maximum_capacity'));
-}
-
+require 'app/view/handler/redirection/_minor_report.php';
+require 'app/view/handler/gateway/_minor_session.php';
 require 'app/view/administrator/select2-message.php';
 ?>
 <!-- === Insert Administrator Content === -->
@@ -46,54 +19,7 @@ require 'app/view/administrator/select2-message.php';
 </section>
 
 <section class="content">
-<?php 
-  // require 'app/view/handler/redirection/_major_count.php'; 
-if ($result == null || $result == '-') {
-  $offense = "First Offense";
-  $sql_offense = "first_offense";
-} elseif ($result == "First Offense") {
-  $offense = "Second Offense ";
-  $sql_offense = "second_offense";
-} elseif ($result == "Second Offense") {
-  $offense = "Third Offense";
-  $sql_offense = "third_offense";
-}
-
-if (isset($_GET['r'])) {
-  $decode = base64_decode($_GET['r']);
-
-  if ($decode == 'incomplete_date_incident_and_report') {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-   Please do not leave <strong><u>Date of Incident</u></strong> and <strong><u>Narrative Report</u></strong> and <strong><u>Status</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == 'incomplete_date_incident') {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave the <strong><u>Date of Incident</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == 'incomplete_report') {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave the <strong><u>Narrative Report</u></strong> field blank.
-</div>
-<?php
-  } elseif ($decode == 'incomplete_status') {
-?>
-<div class="alert alert-danger">
-  <i class="icon fa fa-warning"></i>
-  Please do not leave the <strong><u>Status</u></strong> field blank.
-</div>
-<?php
-  }
-}
-?>
-
+<?php require 'app/view/handler/redirection/_major_count.php'; ?>
   <div class="row">
     <div class="col-md-3">
       <a href="minor_offense_list.php" class="btn btn-primary btn-block margin-bottom">Back</a>
@@ -177,14 +103,6 @@ if (isset($_GET['r'])) {
         ?>
           <label>Sanctions:</label>
           <input name="offense" class="form-control" disabled value="<?php echo $first_offense; ?>" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label>Status:</label>
-          <select name="status" class="form-control">
-            <option value=""></option>
-            <option value="Case Record">Minor Offense Case Record</option>
-            <option value="Issue">Issue Minor Offense</option>
-          </select>
         </div>
         <div class="form-group">
           <label>Narrative Report:</label>
